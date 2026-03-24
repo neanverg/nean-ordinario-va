@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get in Touch | Nean Ordinario</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+  <!-- Animated Liquid Background -->
+  <div class="liquid-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="noise-overlay"></div>
+  </div>
+
+  <div class="cursor-glow"></div>
+
+  <!-- Navigation -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html#home" class="logo">Nean<span>.</span></a>
+      <div class="nav-right">
+        <nav class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="index.html#about" class="nav-link">About</a>
+          <a href="index.html#services" class="nav-link">Services</a>
+          <a href="index.html#portfolio" class="nav-link">Portfolio</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section contact-section" style="padding-top: 8rem;">
+      <div class="section-container" style="max-width: 800px;">
+        <div class="section-header reveal fade-up active">
+          <h1 class="section-title" style="font-size: 3rem;">Let's Work <span>Together</span></h1>
+          <p class="section-subtitle">Send me a message</p>
+        </div>
+
+        <div class="glass-card form-container reveal fade-up delay-1 active" style="padding: 3rem;">
+          <!-- Using FormSubmit to send direct to email -->
+          <form action="https://formsubmit.co/neanverg@gmail.com" method="POST" class="contact-form">
+            <!-- Redirect after successful submission -->
+            <input type="hidden" name="_next" value="https://example.com/thanks.html">
+            <!-- Prevent captcha if possible, but formsubmit uses it by default unless configured -->
+            <input type="hidden" name="_captcha" value="false">
+
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="John Doe" class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="john@example.com" class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="service">Interested Service</label>
+              <select id="service" name="service" required class="form-input">
+                <option value="" disabled selected>Select a Service</option>
+                <option value="Executive Virtual Assistance">Executive Virtual Assistance</option>
+                <option value="Compliance Services">Compliance Services</option>
+                <option value="Web Development & Design">Web Development & Design</option>
+                <option value="Data Research & Analysis">Data Research & Analysis</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Project Description</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project and requirements..." class="form-input"></textarea>
+            </div>
+
+            <button type="submit" class="glass-btn-solid submit-btn">Send Message <i class="ph-bold ph-paper-plane-right"></i></button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="glass-card footer-container reveal fade-up active" style="padding: 3rem;">
+      <div class="footer-content" style="margin-bottom: 0; justify-content: center; align-items: center; text-align: center; flex-direction: column;">
+        <a href="index.html#home" class="logo">Nean<span>.</span></a>
+        <p style="margin-top: 1rem; color: var(--text-secondary);">Empowering your business with premium support.</p>
+        <p style="margin-top: 2rem; color: var(--text-secondary);">&copy; 2026 Nean Ordinario.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Just a bit of script for the cursor in contact page
+    const cursorGlow = document.querySelector('.cursor-glow');
+    let mouseX=0, mouseY=0, glowX=0, glowY=0;
+    document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+    function animateCursor() {
+      glowX += (mouseX - glowX) * 0.1; glowY += (mouseY - glowY) * 0.1;
+      cursorGlow.style.left = `${glowX}px`; cursorGlow.style.top = `${glowY}px`;
+      requestAnimationFrame(animateCursor);
+    }
+    if (window.matchMedia("(pointer: fine)").matches) animateCursor();
+    else cursorGlow.style.display = 'none';
+
+    // Update _next to return to index.html with a query param if wanted, or just window.location.origin
+    document.querySelector('input[name="_next"]').value = window.location.origin + '/index.html';
+  </script>
+</body>
+</html>
